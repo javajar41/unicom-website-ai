@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国联通 - 创新·改变世界</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        /* 导航栏 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 15px 50px;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00d4ff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #0052d9, #00d4ff);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s;
+            opacity: 0.9;
+        }
+        
+        .nav-links a:hover {
+            color: #00d4ff;
+            opacity: 1;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .btn-outline {
+            border: 1px solid rgba(255,255,255,0.3);
+            color: #fff;
+        }
+        
+        .btn-outline:hover {
+            border-color: #00d4ff;
+            color: #00d4ff;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #0052d9, #00d4ff);
+            color: #fff;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 82, 217, 0.4);
+        }
+        
+        /* Hero区域 */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 50px 80px;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 82, 217, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
+        }
+        
+        .hero-content {
+            max-width: 700px;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 20px;
+            color: #00d4ff;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+        
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #fff 0%, #00d4ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .btn-large {
+            padding: 15px 40px;
+            font-size: 16px;
+        }
+        
+        /* 产品展示 */
+        .products {
+            padding: 100px 50px;
+            background: rgba(0,0,0,0.2);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: rgba(255,255,255,0.6);
+            font-size: 18px;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .product-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(0, 212, 255, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 82, 217, 0.2);
+        }
+        
+        .product-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #0052d9, #00d4ff);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin-bottom: 25px;
+        }
+        
+        .product-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .product-card p {
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 25px;
+        }
+        
+        .product-link {
+            color: #00d4ff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+        }
+        
+        /* 特色服务 */
+        .features {
+            padding: 100px 50px;
+        }
+        
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .feature-item {
+            text-align: center;
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin: 0 auto 20px;
+        }
+        
+        .feature-item h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .feature-item p {
+            color: rgba(255,255,255,0.6);
+            font-size: 15px;
+        }
+        
+        /* 页脚 */
+        .footer {
+            padding: 60px 50px 30px;
+            background: rgba(0,0,0,0.3);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-brand h3 {
+            font-size: 24px;
+            color: #00d4ff;
+            margin-bottom: 15px;
+        }
+        
+        .footer-brand p {
+            color: rgba(255,255,255,0.6);
+            font-size: 14px;
+        }
+        
+        .footer-links h4 {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #00d4ff;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+            font-size: 14px;
+        }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 100px 20px 60px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .products,
+            .features {
+                padding: 60px 20px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="logo">
+            <div class="logo-icon">🇨🇳</div>
+            <span>中国联通</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">首页</a></li>
+            <li><a href="#products">产品服务</a></li>
+            <li><a href="#5g">5G专区</a></li>
+            <li><a href="#business">政企客户</a></li>
+            <li><a href="#support">服务支持</a></li>
+        </ul>
+        <div class="nav-buttons">
+            <a href="#" class="btn btn-outline">登录</a>
+            <a href="#" class="btn btn-primary">注册</a>
+        </div>
+    </nav>
+
+    <!-- Hero区域 -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge">🚀 5G新时代</div>
+            <h1>创新，<br>改变世界</h1>
+            <p>中国联通5G，让未来触手可及。超高速率、超低时延、海量连接，开启智能新生活。</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-primary btn-large">立即办理</a>
+                <a href="#" class="btn btn-outline btn-large">了解更多</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品展示 -->
+    <section class="products" id="products">
+        <div class="section-title">
+            <h2>热门产品</h2>
+            <p>为您提供全方位的通信服务解决方案</p>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-icon">📱</div>
+                <h3>5G套餐</h3>
+                <p>超大流量、超快网速，畅享5G新生活。多种档位可选，满足不同需求。</p>
+                <a href="#" class="product-link">查看详情 →</a>
+            </div>
+            <div class="product-card">
+                <div class="product-icon">🏠</div>
+                <h3>智慧宽带</h3>
+                <p>千兆光纤入户，全屋智能覆盖。游戏、4K视频、远程办公零卡顿。</p>
+                <a href="#" class="product-link">查看详情 →</a>
+            </div>
+            <div class="product-card">
+                <div class="product-icon">📶</div>
+                <h3>物联网</h3>
+                <p>万物互联，智享未来。为企业提供专业的物联网连接服务。</p>
+                <a href="#" class="product-link">查看详情 →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特色服务 -->
+    <section class="features">
+        <div class="section-title">
+            <h2>便捷服务</h2>
+            <p>随时随地，轻松办理</p>
+        </div>
+        <div class="feature-list">
+            <div class="feature-item">
+                <div class="feature-icon">💳</div>
+                <h3>在线办理</h3>
+                <p>足不出户，业务轻松办理</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🎧</div>
+                <h3>智能客服</h3>
+                <p>24小时在线，快速响应</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">📲</div>
+                <h3>APP下载</h3>
+                <p>掌上一站式服务</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🔍</div>
+                <h3>营业厅查询</h3>
+                <p>附近网点，一键导航</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>中国联通</h3>
+                <p>创新·改变世界<br>让一切自由联通</p>
+            </div>
+            <div class="footer-links">
+                <h4>产品服务</h4>
+                <ul>
+                    <li><a href="#">个人业务</a></li>
+                    <li><a href="#">家庭业务</a></li>
+                    <li><a href="#">政企客户</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>自助服务</h4>
+                <ul>
+                    <li><a href="#">话费查询</a></li>
+                    <li><a href="#">业务办理</a></li>
+                    <li><a href="#">在线客服</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>关于我们</h4>
+                <ul>
+                    <li><a href="#">公司简介</a></li>
+                    <li><a href="#">新闻中心</a></li>
+                    <li><a href="#">加入我们</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 中国联通 版权所有 | 京ICP备xxx号</p>
+        </div>
+    </footer>
+</body>
+</html>
