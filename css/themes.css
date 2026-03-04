@@ -1,0 +1,327 @@
+/**
+ * 中国联通官网 - 主题样式
+ * 支持深色/浅色模式切换
+ */
+
+:root {
+    /* 主色调 */
+    --primary-color: #0052d9;
+    --primary-light: #00d4ff;
+    --primary-gradient: linear-gradient(135deg, #0052d9, #00d4ff);
+    
+    /* 背景色 */
+    --bg-primary: #0a0e27;
+    --bg-secondary: #1a1f3a;
+    --bg-card: rgba(255, 255, 255, 0.03);
+    --bg-hover: rgba(255, 255, 255, 0.05);
+    
+    /* 文字颜色 */
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --text-accent: #00d4ff;
+    
+    /* 边框 */
+    --border-color: rgba(255, 255, 255, 0.1);
+    --border-accent: rgba(0, 212, 255, 0.3);
+    
+    /* 阴影 */
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 20px 60px rgba(0, 82, 217, 0.2);
+    --shadow-glow: 0 0 30px rgba(0, 212, 255, 0.3);
+    
+    /* 导航 */
+    --nav-bg: rgba(10, 14, 39, 0.95);
+    --nav-blur: blur(10px);
+    
+    /* 动画 */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+/* 浅色模式 */
+[data-theme="light"] {
+    --bg-primary: #f8fafc;
+    --bg-secondary: #ffffff;
+    --bg-card: rgba(255, 255, 255, 0.8);
+    --bg-hover: rgba(0, 82, 217, 0.05);
+    
+    --text-primary: #1a1f3a;
+    --text-secondary: rgba(26, 31, 58, 0.7);
+    --text-muted: rgba(26, 31, 58, 0.6);
+    --text-accent: #0052d9;
+    
+    --border-color: rgba(0, 0, 0, 0.1);
+    --border-accent: rgba(0, 82, 217, 0.3);
+    
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 20px 60px rgba(0, 82, 217, 0.15);
+    --shadow-glow: 0 0 30px rgba(0, 82, 217, 0.2);
+    
+    --nav-bg: rgba(255, 255, 255, 0.95);
+}
+
+/* 主题切换按钮样式 */
+.theme-switcher {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    z-index: 9999;
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    padding: 8px;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-normal);
+}
+
+.theme-switcher:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-glow);
+}
+
+.theme-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+}
+
+.theme-btn:hover {
+    color: var(--text-accent);
+    background: var(--bg-hover);
+}
+
+.theme-btn.active {
+    color: var(--text-accent);
+    background: var(--primary-gradient);
+    color: white;
+}
+
+/* 语言切换器 */
+.lang-switcher {
+    position: fixed;
+    top: 160px;
+    right: 20px;
+    z-index: 9999;
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    padding: 8px;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.lang-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+}
+
+.lang-btn:hover {
+    color: var(--text-accent);
+    background: var(--bg-hover);
+}
+
+.lang-btn.active {
+    color: white;
+    background: var(--primary-gradient);
+}
+
+/* 主题相关组件样式 */
+body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background var(--transition-slow), color var(--transition-slow);
+}
+
+.navbar {
+    background: var(--nav-bg);
+    backdrop-filter: var(--nav-blur);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.product-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+}
+
+.product-card:hover {
+    background: var(--bg-hover);
+    border-color: var(--border-accent);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-outline {
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+.btn-outline:hover {
+    border-color: var(--text-accent);
+    color: var(--text-accent);
+}
+
+.footer {
+    background: var(--bg-card);
+    border-top: 1px solid var(--border-color);
+}
+
+/* 数据展示区域主题适配 */
+.data-viz-section {
+    background: var(--bg-secondary);
+}
+
+.stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+}
+
+.stat-card:hover {
+    border-color: var(--border-accent);
+    box-shadow: var(--shadow-lg);
+}
+
+/* 套餐对比区域主题适配 */
+.package-section {
+    background: var(--bg-primary);
+}
+
+.package-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+}
+
+.package-card.featured {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-glow);
+}
+
+.package-card.featured::before {
+    background: var(--primary-gradient);
+}
+
+/* 滑块样式 */
+.slider-container input[type="range"] {
+    background: var(--border-color);
+}
+
+.slider-container input[type="range"]::-webkit-slider-thumb {
+    background: var(--primary-gradient);
+    box-shadow: var(--shadow-glow);
+}
+
+.slider-value {
+    background: var(--primary-gradient);
+}
+
+/* 网速测试主题适配 */
+.speed-test-section {
+    background: var(--bg-secondary);
+}
+
+.speed-display {
+    background: var(--bg-card);
+    border: 2px solid var(--border-accent);
+}
+
+.speed-ring {
+    stroke: var(--border-color);
+}
+
+.speed-ring.progress {
+    stroke: url(#speedGradient);
+}
+
+/* 客服浮窗主题适配 */
+.chat-widget {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+}
+
+.chat-header {
+    background: var(--primary-gradient);
+}
+
+.chat-messages {
+    background: var(--bg-primary);
+}
+
+.chat-input {
+    border-top: 1px solid var(--border-color);
+    background: var(--bg-card);
+}
+
+.chat-input input {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+.chat-toggle {
+    background: var(--primary-gradient);
+    box-shadow: var(--shadow-glow);
+}
+
+.chat-toggle:hover {
+    box-shadow: 0 0 40px rgba(0, 212, 255, 0.5);
+}
+
+/* 地图容器主题适配 */
+.map-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+}
+
+.map-legend {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+}
+
+/* 响应式主题切换按钮 */
+@media (max-width: 768px) {
+    .theme-switcher {
+        top: auto;
+        bottom: 100px;
+        right: 15px;
+    }
+    
+    .lang-switcher {
+        top: auto;
+        bottom: 160px;
+        right: 15px;
+    }
+    
+    .theme-btn,
+    .lang-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+}
